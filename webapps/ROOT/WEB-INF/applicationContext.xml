@@ -13,7 +13,7 @@
 		<property name="url" value="jdbc:mysql://127.11.179.1:3306/accts" />
 		<property name="username" value="admin" />
 		<property name="password" value="lrk5dmtEzY-N" />
-		<!-- <property name="url" value="jdbc:mysql://127.7.13.1:3306/acctapp" />
+		<!-- <property name="url" value="jdbc:mysql://127.11.179.1:3306/acctapp" />
 		<property name="username" value="admin" />
 		<property name="password" value="admin" />  -->
 	</bean>
