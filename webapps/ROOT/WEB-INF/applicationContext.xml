@@ -10,7 +10,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.11.179.1:3306/accts" />
+		<property name="url" value="jdbc:mysql://127.11.179.1:3306/accts?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="admin" />
 		<property name="password" value="lrk5dmtEzY-N" />
 		<!-- <property name="url" value="jdbc:mysql://127.11.179.1:3306/acctapp" />
