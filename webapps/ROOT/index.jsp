@@ -16,7 +16,7 @@
 </head>
 <body>
 <h1>记一笔</h1>
-<form action="account_add" method="get">
+<form action="account_add" method="post">
 <label>日期：</label><input name="date" class="easyui-datebox" value="2012-12-11" /><br/>
 <label>项目：</label><input name="item" value="测试"/><br/>
 <label>分类：</label><input name="category" value="1"/><br/>
