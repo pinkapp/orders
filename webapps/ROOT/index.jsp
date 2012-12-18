@@ -16,6 +16,13 @@
 </head>
 <body>
 <h1>记一笔</h1>
-<label>日期：</label><input class="easyui-datebox" />
+<form action="account_add" method="get">
+<label>日期：</label><input name="date" class="easyui-datebox" value="2012-12-11" /><br/>
+<label>项目：</label><input name="item" value="测试"/><br/>
+<label>分类：</label><input name="category" value="1"/><br/>
+<label>金额：</label><input name="money" value="33.44"/><br/>
+<label>备注：</label><input name="note" value="我是来测试的"/><br/>
+<input type="submit" value="提交" />
+</form>
 </body>
 </html>
