@@ -14,7 +14,7 @@
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('form').form('submit', {
+	$('form').form({
 	    success:function(data){
 	        var info;
 	        if(data == 1){
