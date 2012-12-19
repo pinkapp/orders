@@ -12,5 +12,6 @@
 	<!--设置编码形式 -->
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<constant name="struts.objectFactory" value="spring" />
-	<include file="struts-mods.xml" />
+	<include file="struts-gets.xml" />
+	<include file="struts-add.xml" />
 </struts>
