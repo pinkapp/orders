@@ -12,6 +12,21 @@
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="js/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('form').form('submit', {
+	    success:function(data){
+	        var info;
+	        if(data == 1){
+	        	info = '操作成功';
+	        }else{
+	        	info = '操作失败,错误码:' + data;
+	        }
+	        $.messager.show({title:'信息', msg:info, timeout:5000, showType:'slide'});
+	    }
+	});
+});
+</script>
 <title>记一笔</title>
 </head>
 <body>
