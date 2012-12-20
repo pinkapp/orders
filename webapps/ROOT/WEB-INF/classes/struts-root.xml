@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-	<package name="struts-gets" extends="struts-default" namespace="/">
+	<package name="struts-root" extends="struts-default" namespace="/">
 		<action name="version" class="infoAction" method="version" />
 		<action name="info" class="infoAction" method="info" />
 	</package>
