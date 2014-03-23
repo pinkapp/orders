@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "validation-config.dtd">
+<validation-config lang="auto">
+	<form id="addUserFormId" show-error="alert" show-type="all">
+		<field name="username" display-name="用户名" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="50"/>
+		</field>
+		<field name="userpassword1" display-name="用户密码" onfail="">
+			<depend name="required" />
+			<depend name="commonChar" />
+			<depend name="maxLength" param0="50"/>
+		</field>
+		<field name="age" display-name="用户年龄" onfail="">
+			<depend name="maxLength" param0="3"/>
+			<depend name="integerRange" param0="10" param1="60"/>
+		</field>
+	</form>
+	
+	<!-- 基础数据类型校验 -->
+	<form id="BaseDataFormId" show-error="alert" show-type="all">
+		<field name="typeName" display-name="字典类型" onfail="">
+			<depend name="required" />
+		</field>
+	</form>
+	
+	<!-- 基础数据明细校验 -->
+	<form id="BaseDataListFormId" show-error="alert" show-type="all">
+		<field name="listName" display-name="字典明细名称" onfail="">
+			<depend name="required" />
+		</field>
+		<field name="listCode" display-name="字典明细代码" onfail="">
+			<depend name="required" />
+		</field>
+	</form>
+	
+	<!-- 样式校验 -->
+	<form id="TCssFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="栏目名称" onfail="">
+			<depend name="required" />
+		</field>
+		<field name="filename" display-name="文件名" onfail="">
+			<depend name="required" />
+		</field>
+	</form> 
+	
+	<!-- 专家分类 -->
+	<form id="addDicExpertSortFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="专家分类名称" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="40"/>
+		</field>
+		<field name="en" display-name="英文标识" onfail=""> 
+			<depend name="maxLength" param0="40"/>
+		</field> 
+	</form>	
+	<!-- 行业分类 -->
+	<form id="addDicProfessionCategoryFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="行业名称" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="50"/>
+		</field>
+		<field name="sn" display-name="资源代码" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="50"/>
+		</field> 
+	</form>	
+	
+	<!-- 资源分类 -->
+	<form id="addDicTechResourceSortFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="资源分类名称" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="50"/>
+		</field>
+		<field name="sn" display-name="资源代码" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="50"/>
+		</field>
+	    <field name="description" display-name="资源分类简介" onfail="">	 
+			<depend name="maxLength" param0="1000"/>
+		</field>
+	</form>	
+	
+	<!--  文章类型验证 -->
+	<form id="addArticleTypeFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="文章类型名称" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="40"/>
+		</field>
+	</form>
+
+	<!--  关联事项验证 -->
+	<form id="addBelongingsFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="关联事项名称" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="100"/>
+		</field>
+	</form>
+	
+	<!-- 部门名称验证 -->
+	<form id="addDepartmentFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="部门名称" onfail="">		
+			<depend name="required" />
+			<depend name="maxLength" param0="40"/>
+	   	</field>
+	</form>
+	
+	<!-- 关联业务验证 -->
+	<form id="addOperationFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="业务名称" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="40"/>
+		</field>
+	</form>	
+	
+	<!-- 关联阶段验证 -->	
+	<form id="addPhaseFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="阶段名称" onfail="">
+			<depend name="maxLength" param0="40"/>
+			<depend name="required" />
+		</field>
+	</form>	 
+	
+	<!-- 地域管理验证 -->		
+	<form id="addRegionFormId" show-error="alert" show-type="all">
+		<field name="name" display-name="地域名称" onfail="">
+			<depend name="required" />
+			<depend name="maxLength" param0="50"/>
+		</field>
+		<field name="sn" display-name="资源代码" onfail="">
+			<depend name="required" param0="50" />
+		</field>
+		<field name="trust" display-name="认证" onfail="">
+			<depend name="maxLength" param0="1"/> 
+		</field>
+		<field name="fatherSn" display-name="父编码" onfail="">
+			<depend name="maxLength" param0="50"/> 
+		</field> 
+		<field name="statistic" display-name="统计量" onfail="">
+			<depend name="maxLength" param0="8"/> 
+		</field>
+	</form>				
+</validation-config>
