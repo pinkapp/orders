@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            {
                var url="<%=path %>/updown/updown.jsp?fujianPath="+fujianPath+"&fujianYuashiMing="+fujianYuashiMing;
 		       url=encodeURI(url); 
-               url=encodeURI(url); 
+               //url=encodeURI(url); 
                window.open(url,"_self");
            }
     </script>
