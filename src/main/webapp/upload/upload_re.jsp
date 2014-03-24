@@ -1,70 +1,40 @@
-<%@ page contentType="text/html;charset=utf-8" language="java" import="com.jspsmart.upload.*"%>
-<%@ page import="com.jspsmart.upload.*"%>
+<%@ page contentType="text/html;charset=utf-8" language="java"%>
+<%@ page import="org.apache.commons.fileupload.*"%>
+<%@ page import="org.apache.commons.fileupload.servlet.*"%>
+<%@ page import="org.apache.commons.fileupload.disk.*"%>
 <%@ page import="java.util.*"%>
-<%
-String path = request.getContextPath();
-%>
-<%
-    
-    String newFile1Name=null;
-    String file_name=null;
-	SmartUpload mySmartUpload = new SmartUpload();
-
-	//初始化上传
-	mySmartUpload.initialize(pageContext);
-
-	//只允许上载此类文件
-	try 
-	{
-		//mySmartUpload.setAllowedFilesList("jpg,Jpg,JPG,GIF,gif,Gif,png");
-		mySmartUpload.upload();
-	} 
-	catch (Exception e)
-    {
-		//out.println("<script language=javascript>alert('上传格式错误！');   history.back(-1);</script>");
-		//return;
+<%@page import="java.io.*"%>
+<%  
+    String home = System.getProperty("user.home");
+    File  uploadFile = new File(home,"upload");
+    if(!uploadFile.exists()){
+    	uploadFile.mkdirs();
+    }
+	boolean isMultipart = ServletFileUpload.isMultipartContent(request);//检查输入请求是否为multipart表单数据。
+	if (isMultipart == true) {
+		FileItemFactory factory = new DiskFileItemFactory();//为该请求创建一个DiskFileItemFactory对象，通过它来解析请求。执行解析后，所有的表单项目都保存在一个List中。
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		List<FileItem> items = upload.parseRequest(request);
+		Iterator<FileItem> itr = items.iterator();
+		while (itr.hasNext()) {
+			FileItem item = (FileItem) itr.next();
+			if (item.isFormField()) {
+			} else {
+				File fullFile = new File(item.getName());
+			    File savedFile = new File(uploadFile, fullFile.getName());
+			    if(!savedFile.exists()) {
+			    	savedFile.createNewFile();  
+                } 
+			    item.write(savedFile);
+				out.print("the upload file is in the " + savedFile.getAbsolutePath());
+				out.print("<br>");
+			}
+		}
+	} else {
+		out.print("the enctype must be multipart/form-data");
 	}
-	
-	try 
-	{
-		   com.jspsmart.upload.File myFile = mySmartUpload.getFiles().getFile(0);
-		   if (myFile.isMissing())
-		   {
-			  out.println("<script language=javascript>alert('必须选择图片！');   history.back(-1);</script>");
-			  return;
-
-		   } 
-		   else 
-		   {
-			   int file_size = myFile.getSize(); //取得文件的大小 (单位是b) 
-			   file_name=myFile.getFileName();
-			   System.out.println("文件大小："+file_size+"文件名称："+file_name);
-			   //if (file_size > 10*1024*1024)
-			   //{
-				  //out.println("<script language=javascript>alert('上传图片大小应控制在10K~1M之间！');   history.back(-1);</script>");
-				  //return;
-			   //}
-               //else
-               //{
-                   newFile1Name=new Date().getTime()+file_name.substring(file_name.indexOf("."));
-	               System.out.println("新文件名称："+newFile1Name);
-				
-				   String saveurl = request.getSession().getServletContext().getRealPath("upload");
-				
-				   saveurl = saveurl+"/"+newFile1Name;
-				   myFile.saveAs(saveurl, mySmartUpload.SAVE_PHYSICAL);
-	
-              // }
-			} 
-	  } 
-	  catch (Exception e)
-	  {
-	    e.toString();
-	  }
 %>
 
 <script language="javascript">
-    document.write("上传成功");
-	window.parent.document.getElementById("fujian").value="/upload/<%= newFile1Name%>";
-	window.parent.document.getElementById("fujianYuanshiming").value="<%= file_name%>";
+	
 </script>
