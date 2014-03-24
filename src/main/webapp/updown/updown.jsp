@@ -1,5 +1,6 @@
+<%@page import="java.io.*"%>
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ page import="com.jspsmart.upload.*" %>
 <%
 String path = request.getContextPath();
 %>
@@ -10,31 +11,40 @@ String path = request.getContextPath();
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
   </head>
   
   <body> 
       <% 
-          String fujianPath=request.getParameter("fujianPath");
-          String fujianYuashiMing=request.getParameter("fujianYuashiMing");
-          fujianYuashiMing=java.net.URLDecoder.decode(fujianYuashiMing,"UTF-8");
-          System.out.println(fujianYuashiMing+fujianPath);
-          
-          SmartUpload su = new SmartUpload(); // 新建一个SmartUpload对象 
-
-          su.initialize(pageContext); // 初始化 
-
-          su.setContentDisposition(null); 
-          // 设定contentDisposition为null以禁止浏览器自动打开文件， 
-          //保证点击链接后是下载文件。若不设定，则下载的文件扩展名为 
-          //doc时，浏览器将自动用word打开它。扩展名为pdf时，将用acrobat打开
-
-          //su.downloadFile("/uploadPath/file/liu.doc"); // 下载英文文件
-          su.downloadFile(fujianPath, null, new String(fujianYuashiMing.getBytes(), "ISO8859-1")); // 下载中文文件
-          //downloadFile(String sourceFilePathName, String contentType, String destFileName)
-          out.clear();
-          out=pageContext.pushBody(); 
+             
+          java.io.BufferedInputStream bis = null;     
+          java.io.BufferedOutputStream bos = null;     
+          try {     
+        	  String filePath=request.getParameter("fujianPath");
+              String fileName=request.getParameter("fujianYuashiMing");
+              fileName=URLDecoder.decode(fileName,"UTF-8");
+              long fileLength = new File(filePath).length();     
+      
+              response.setContentType("application/x-msdownload;");     
+              response.setHeader("Content-disposition", "attachment; filename=" + fileName);     
+              response.setHeader("Content-Length", String.valueOf(fileLength));     
+              response.setContentType("text/html;charset=utf-8"); 
+              filePath = request.getRealPath(filePath);
+              System.out.println(filePath);
+              bis = new BufferedInputStream(new FileInputStream(filePath));     
+              bos = new BufferedOutputStream(response.getOutputStream());     
+              byte[] buff = new byte[2048];     
+              int bytesRead;     
+              while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {     
+                  bos.write(buff, 0, bytesRead);     
+              }     
+          } catch (Exception e) {     
+              e.printStackTrace();     
+          } finally {     
+              if (bis != null)     
+                  bis.close();     
+              if (bos != null)     
+                  bos.close();     
+          }     
       %> 
 
       
