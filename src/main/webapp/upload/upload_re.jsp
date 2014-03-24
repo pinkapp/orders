@@ -5,7 +5,7 @@
 <%@ page import="java.util.*"%>
 <%@page import="java.io.*"%>
 <%  
-    String home = System.getProperty("user.home");
+    String home = request.getRealPath("/");
     File  uploadFile = new File(home,"upload");
     if(!uploadFile.exists()){
     	uploadFile.mkdirs();
