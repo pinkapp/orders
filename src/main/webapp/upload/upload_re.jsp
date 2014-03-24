@@ -22,11 +22,10 @@
 			} else {
 				File fullFile = new File(item.getName());
 			    File savedFile = new File(uploadFile, fullFile.getName());
-			    out.print("the upload file is in the " + savedFile.getAbsolutePath());
-			    /* if(!savedFile.exists()) {
+			    if(!savedFile.exists()) {
 			    	savedFile.createNewFile();  
                 } 
-			    item.write(savedFile); */
+			    item.write(savedFile);
 				out.print("the upload file is in the " + savedFile.getAbsolutePath());
 				out.print("<br>");
 			}
