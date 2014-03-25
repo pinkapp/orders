@@ -1,7 +1,14 @@
 package com.orm;
 
-public class Tuser
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Tuser implements Serializable
 {
+	@Id
 	private String id;
 	private String loginname;
 	private String loginpw;

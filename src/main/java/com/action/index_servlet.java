@@ -24,7 +24,7 @@ public class index_servlet extends HttpServlet
 	public void service(HttpServletRequest req,HttpServletResponse res)throws ServletException, IOException 
 	{
 		
-		List gonggaoList=new ArrayList();
+		/*List gonggaoList=new ArrayList();
 		String sql="select * from t_gonggao order by id desc";
 		Object[] params={};
 		DB mydb=new DB();
@@ -88,7 +88,7 @@ public class index_servlet extends HttpServlet
 		{
 			newsList=newsList.subList(0, 5);
 		}
-		req.getSession().setAttribute("newsList", newsList);
+		req.getSession().setAttribute("newsList", newsList);*/
 		
 		
 		

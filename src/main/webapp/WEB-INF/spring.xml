@@ -7,6 +7,9 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 	<bean id="customerDAOTarget" class="com.sky.dao.CustomerDAOJPAImpl">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	<bean id="loginService" class="com.service.loginService">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
 	<bean id="customerDAO"
 		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
 		<property name="transactionManager" ref="transactionManager" />

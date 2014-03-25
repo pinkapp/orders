@@ -1,15 +1,16 @@
 package com.service;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
-
+import org.springframework.orm.jpa.support.JpaDaoSupport;
 
 import com.dao.DB;
 import com.orm.TAdmin;
@@ -17,10 +18,9 @@ import com.orm.Tbanji;
 import com.orm.Tkecheng;
 import com.orm.Tstu;
 import com.orm.Ttea;
-import com.orm.Tuser;
 import com.orm.Tzhuanye;
 
-public class loginService
+public class loginService extends JpaDaoSupport
 {
 	public String login(String userName,String userPw,int userType)
 	{
@@ -28,119 +28,34 @@ public class loginService
 		
 		if(userType==0)//系统管理员登陆
 		{
-			String sql="select * from t_admin where userName=? and userPw=?";
-			Object[] params={userName,userPw};
-			//param数据库操作参数 数组
-			DB mydb=new DB();
-			mydb.doPstm(sql, params);//
-			try 
-			{
-				ResultSet rs=mydb.getRs();
-				boolean mark=(rs==null||!rs.next()?false:true);
-				if(mark==false)
-				{
-					 result="no";
-				}
-				else
-				{
-					 result="yes";
-					 TAdmin admin=new TAdmin();
-					 admin.setUserId(rs.getInt("userId"));
-					 admin.setUserName(rs.getString("userName"));
-					 admin.setUserPw(rs.getString("userPw"));
-					 WebContext ctx = WebContextFactory.get(); 
-					 HttpSession session=ctx.getSession(); 
-					 session.setAttribute("userType", 0);
-		             session.setAttribute("admin", admin);
-		             //登录成功后吧信息存储到session
-		             
-				}
-				rs.close();
-			} 
-			catch (SQLException e)
-			{
-				System.out.println("登录失败！");
-				e.printStackTrace();
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("userName", userName);
+			params.put("userPw", userPw);
+			String hql = "select admin from TAdmin admin where admin.userName = :userName and admin.userPw = :userPw";
+			List users = getJpaTemplate().findByNamedParams(hql, params);
+			if(users.isEmpty()){
+				result = "no";
+			}else{
+				WebContext ctx = WebContextFactory.get(); 
+				HttpSession session=ctx.getSession(); 
+	            session.setAttribute("user", users.get(0));
+				result = "yes";
 			}
-			finally
-			{
-				mydb.closed();
+		}else{
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("loginname", userName);
+			params.put("loginpw", userPw);
+			params.put("type", userType);
+			String hql = "select user from Tuser user where user.type = :type and user.loginname = :loginname and user.loginpw = :loginpw";
+			List users = getJpaTemplate().findByNamedParams(hql, params);
+			if(users.isEmpty()){
+				result = "no";
+			}else{
+				WebContext ctx = WebContextFactory.get(); 
+				HttpSession session=ctx.getSession(); 
+	            session.setAttribute("user", users.get(0));
+				result = "yes";
 			}
-			
-		}
-		
-		
-		if(userType==1)
-		{
-			String sql="select * from t_user where type=1 and loginname=? and loginpw=?";
-			Object[] params={userName,userPw};
-			DB mydb=new DB();
-			try
-			{
-				mydb.doPstm(sql, params);
-				ResultSet rs=mydb.getRs();
-				boolean mark=(rs==null||!rs.next()?false:true);
-				if(mark==false)
-				{
-					result="no";
-				}
-				if(mark==true)
-				{
-					Tuser user=new Tuser();
-					user.setId(rs.getString("id"));
-					user.setLoginname(rs.getString("loginname"));
-					user.setLoginpw(rs.getString("loginpw"));
-					user.setXuehao_jiaoshihao(rs.getString("xuehao_jiaoshihao"));
-					user.setType(rs.getInt("type"));
-					result="yes";
-					 
-					WebContext ctx = WebContextFactory.get(); 
-					HttpSession session=ctx.getSession(); 
-		            session.setAttribute("user", user);
-				}
-				rs.close();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-			mydb.closed();
-		}
-		if(userType==2)
-		{
-			String sql="select * from t_user where type=2 and loginname=? and loginpw=?";
-			Object[] params={userName,userPw};
-			DB mydb=new DB();
-			try
-			{
-				mydb.doPstm(sql, params);
-				ResultSet rs=mydb.getRs();
-				boolean mark=(rs==null||!rs.next()?false:true);
-				if(mark==false)
-				{
-					result="no";
-				}
-				if(mark==true)
-				{
-					Tuser user=new Tuser();
-					user.setId(rs.getString("id"));
-					user.setLoginname(rs.getString("loginname"));
-					user.setLoginpw(rs.getString("loginpw"));
-					user.setXuehao_jiaoshihao(rs.getString("xuehao_jiaoshihao"));
-					user.setType(rs.getInt("type"));
-					result="yes";
-					
-					WebContext ctx = WebContextFactory.get(); 
-					HttpSession session=ctx.getSession(); 
-		            session.setAttribute("user", user);
-				}
-				rs.close();
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-			mydb.closed();
 		}
 		return result;
 	}
