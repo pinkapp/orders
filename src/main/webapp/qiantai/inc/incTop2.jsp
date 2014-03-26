@@ -36,11 +36,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <c:if test="${sessionScope.user==null}">
                   alert("请先登录");
             </c:if>
-            <c:if test="${sessionScope.user!=null && sessionScope.user.type==2}">
+            <c:if test="${sessionScope.user!=null && sessionScope.type==2}">
                   var url="<%=path %>/doc?type=zuoyeAll";
                   window.location.href=url;
             </c:if>
-            <c:if test="${sessionScope.user!=null && sessionScope.user.type==1}">
+            <c:if test="${sessionScope.user!=null && sessionScope.type==1}">
                   var url="<%=path %>/doc?type=zuoyeAll";
                   window.location.href=url;
             </c:if>
