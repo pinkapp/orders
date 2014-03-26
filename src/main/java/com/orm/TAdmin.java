@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="t_admin")
 public class TAdmin implements Serializable{
 	@Id
 	private int userId;
@@ -13,6 +15,8 @@ public class TAdmin implements Serializable{
 	private String userName;
 
 	private String userPw;
+	
+	private int type;
 
 	public String getUserName() {
 		return userName;
@@ -36,6 +40,14 @@ public class TAdmin implements Serializable{
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 }

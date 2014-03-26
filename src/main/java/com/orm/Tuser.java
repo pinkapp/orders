@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="t_user")
 public class Tuser implements Serializable
 {
 	@Id
