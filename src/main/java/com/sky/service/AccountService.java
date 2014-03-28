@@ -1,8 +1,8 @@
-package net.pink.service;
+package com.sky.service;
 
 import java.util.List;
 
-import net.pink.model.Account;
+import com.sky.model.Account;
 
 public interface AccountService {
 	/**

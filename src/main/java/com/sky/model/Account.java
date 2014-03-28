@@ -1,4 +1,4 @@
-package net.pink.model;
+package com.sky.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

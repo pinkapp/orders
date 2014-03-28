@@ -1,4 +1,4 @@
-package net.pink.utils;
+package com.sky.framework.utils;
 
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import net.pink.action.base.Pageable;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+
+import com.sky.framework.Pageable;
 
 public class RSMapper
 {

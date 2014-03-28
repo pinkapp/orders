@@ -1,4 +1,4 @@
-package com.util;
+package com.sky.framework.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;

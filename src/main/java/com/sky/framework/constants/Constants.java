@@ -1,4 +1,4 @@
-package net.pink.constants;
+package com.sky.framework.constants;
 
 public class Constants {
 

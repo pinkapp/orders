@@ -1,16 +1,16 @@
-package net.pink.action;
+package com.sky.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import net.pink.action.base.BaseAction;
-import net.pink.constants.Constants;
-
 import org.json.JSONObject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
+import com.sky.framework.BaseAction;
+import com.sky.framework.constants.Constants;
 
 /**
  *

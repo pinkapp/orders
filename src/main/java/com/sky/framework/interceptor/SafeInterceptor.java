@@ -1,4 +1,4 @@
-package net.pink.interceptor;
+package com.sky.framework.interceptor;
 
 import java.util.ArrayList;
 import java.util.List;

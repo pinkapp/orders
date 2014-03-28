@@ -1,14 +1,11 @@
-package net.pink.dao.impl;
+package com.sky.dao;
 
 import java.util.List;
 
-import net.pink.dao.AccountDao;
-import net.pink.model.Account;
-
 import org.springframework.orm.jpa.support.JpaDaoSupport;
-import org.springframework.stereotype.Repository;
 
-//@Repository
+import com.sky.model.Account;
+
 public class AccountDaoImpl extends JpaDaoSupport implements AccountDao {
 
 	public void update(Account card) {

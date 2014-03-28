@@ -1,8 +1,8 @@
-package net.pink.dao;
+package com.sky.dao;
 
 import java.util.List;
 
-import net.pink.model.Account;
+import com.sky.model.Account;
 
 /**
  * 数据库原子操作

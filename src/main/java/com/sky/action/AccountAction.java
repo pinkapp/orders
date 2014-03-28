@@ -1,12 +1,8 @@
-package net.pink.action;
+package com.sky.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
-import net.pink.action.base.BaseAction;
-import net.pink.model.Account;
-import net.pink.service.AccountService;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,13 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-/**
- *
- * @author HuangDeCai
- * @since 2012-12-10 22:13:57
- *
- */
-@SuppressWarnings("serial")
+import com.sky.framework.BaseAction;
+import com.sky.model.Account;
+import com.sky.service.AccountService;
+
 @Controller
 @Scope("prototype")
 public class AccountAction extends BaseAction {

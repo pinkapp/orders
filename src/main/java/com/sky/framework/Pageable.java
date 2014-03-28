@@ -1,4 +1,4 @@
-package net.pink.action.base;
+package com.sky.framework;
 
 public interface Pageable {
 

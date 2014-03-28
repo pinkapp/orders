@@ -1,4 +1,4 @@
-package net.pink.utils;
+package com.sky.framework.utils;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;

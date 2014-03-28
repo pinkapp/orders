@@ -1,4 +1,4 @@
-package net.pink.utils;
+package com.sky.framework.utils;
 
 import java.io.IOException;
 import java.io.OutputStream;
