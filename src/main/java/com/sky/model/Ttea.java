@@ -1,7 +1,14 @@
-package com.orm;
+package com.sky.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="t_tea")
 public class Ttea
 {
+	@Id
 	private int id;
 	private String bianhao;
 	private String name;

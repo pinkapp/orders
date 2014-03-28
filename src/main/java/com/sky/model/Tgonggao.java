@@ -1,17 +1,18 @@
-package com.orm;
+package com.sky.model;
 
-/**
- * @author Administrator
- *
- */
-public class Tliuyan
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="t_gonggao")
+public class Tgonggao
 {
+	@Id
 	private String id;
 	private String title;
 	private String content;
 	private String shijian;
-	private String user_id;
-	private String user_name;
 	public String getContent()
 	{
 		return content;
@@ -36,15 +37,6 @@ public class Tliuyan
 	{
 		this.shijian = shijian;
 	}
-	
-	public String getUser_name()
-	{
-		return user_name;
-	}
-	public void setUser_name(String user_name)
-	{
-		this.user_name = user_name;
-	}
 	public String getTitle()
 	{
 		return title;
@@ -52,14 +44,6 @@ public class Tliuyan
 	public void setTitle(String title)
 	{
 		this.title = title;
-	}
-	public String getUser_id()
-	{
-		return user_id;
-	}
-	public void setUser_id(String user_id)
-	{
-		this.user_id = user_id;
 	}
 
 }

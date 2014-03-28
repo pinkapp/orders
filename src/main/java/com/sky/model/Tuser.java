@@ -1,4 +1,4 @@
-package com.orm;
+package com.sky.model;
 
 import java.io.Serializable;
 
