@@ -8,16 +8,16 @@
 <!--      <create creator="new" javascript="loginService">
               <param name="class" value="com.service.loginService"></param>
           </create> -->
-          <convert converter="bean" match="com.orm.Tzhuanye">
+          <convert converter="bean" match="com.sky.model.Tzhuanye">
               <param name="include" value="id,name"></param>
           </convert>
-          <convert converter="bean" match="com.orm.Tbanji">
+          <convert converter="bean" match="com.sky.model.Tbanji">
               <param name="include" value="id,name"></param>
           </convert>
-          <convert converter="bean" match="com.orm.Tstu">
+          <convert converter="bean" match="com.sky.model.Tstu">
               <param name="include" value="id,xuehao"></param>
           </convert>
-          <convert converter="bean" match="com.orm.Tkecheng">
+          <convert converter="bean" match="com.sky.model.Tkecheng">
               <param name="include" value="id,name"></param>
           </convert>
      </allow>

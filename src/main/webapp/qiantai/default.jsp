@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
         <script type="text/javascript">
-            var url="<%=path %>/index"
+            var url="<%=path %>/index.do";
             window.location.href=url;
         </script>
   </body>
