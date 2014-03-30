@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-       <form action="<%=path %>/upload/upload_re.jsp" name="formAdd" method="post"  enctype="multipart/form-data">
+       <form action="<%=path %>/upload.do" name="formAdd" method="post"  enctype="multipart/form-data">
            <input type="file" name="fujian" id="fujian" onKeyDown="javascript:alert('此信息不能手动输入');return false;" />
            <input type="submit" value="提交" onclick="return check()"/>
        </form>

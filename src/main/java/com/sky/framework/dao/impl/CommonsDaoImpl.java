@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 import org.springframework.orm.jpa.support.JpaDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sky.framework.dao.CommonsDao;
 import com.sky.model.TAdmin;
@@ -98,7 +99,7 @@ public class CommonsDaoImpl extends JpaDaoSupport implements CommonsDao {
 		String hql = "select t from Tnews t";
 		return getJpaTemplate().find(hql);
 	}
-
+	@Transactional
 	public void save(Object entity) {
 		getJpaTemplate().persist(entity);
 	}

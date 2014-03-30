@@ -12,12 +12,16 @@
 	<!--设置编码形式 -->
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<constant name="struts.action.extension" value="do"/>
+	<constant name="struts.multipart.saveDir" value="tmp"/>
 	<include file="struts-root.xml" />
 	<include file="struts-gets.xml" />
 	<include file="struts-add.xml" />
 	<package name="struts-root" extends="struts-default" namespace="/">
 		<action name="version" class="infoAction" method="version" />
 		<action name="info" class="infoAction" method="info" />
+		<action name="upload" class="uploadAction" method="upload">
+			<result>/upload/uploadInfo.jsp</result>
+		</action>
 		<action name="index" class="indexAction" method="index">
 			<result>/qiantai/index.jsp</result>
 		</action>
