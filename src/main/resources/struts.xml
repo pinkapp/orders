@@ -21,5 +21,12 @@
 		<action name="index" class="indexAction" method="index">
 			<result>/qiantai/index.jsp</result>
 		</action>
+		<action name="doc" class="docAction" method="doc">
+			<result>/common/success.jsp</result>
+			<result name="zuoyeMana">/qiantai/zuoye/zuoyeMana.jsp</result>
+			<result name="zuoyeAll">/qiantai/zuoye/zuoyeAll.jsp</result>
+			<result name="shipinMana">/admin/shipin/shipinMana.jsp</result>
+			<result name="shipinAll">/qiantai/shipin/shipinAll.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   alert("你是学生用户不能发布作业");
             </c:if>
             <c:if test="${sessionScope.user!=null && sessionScope.user.type==1}">
-                  var url="<%=path %>/doc?type=zuoyeMana";
+                  var url="<%=path %>/doc.do?type=zuoyeMana";
                   window.location.href=url;
             </c:if>
          }
@@ -37,18 +37,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   alert("请先登录");
             </c:if>
             <c:if test="${sessionScope.user!=null && sessionScope.type==2}">
-                  var url="<%=path %>/doc?type=zuoyeAll";
+                  var url="<%=path %>/doc.do?type=zuoyeAll";
                   window.location.href=url;
             </c:if>
             <c:if test="${sessionScope.user!=null && sessionScope.type==1}">
-                  var url="<%=path %>/doc?type=zuoyeAll";
+                  var url="<%=path %>/doc.do?type=zuoyeAll";
                   window.location.href=url;
             </c:if>
          }
           
          function liuyanAll1()
          {
-             var url="<%=path %>/liuyan?type=liuyanAll1";
+             var url="<%=path %>/liuyan.do?type=liuyanAll1";
              window.location.href=url;
          } 
          
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </c:if>
             
             <c:if test="${sessionScope.user!=null}">
-                var url="<%=path %>/liuyan?type=liuyanAll";
+                var url="<%=path %>/liuyan.do?type=liuyanAll";
 				var targetWinName="newWin";
 				var features="width="+screen.width-200+" ,height="+screen.height-150+" ,toolbar=no, top=0, left=0, menubar=no, scrollbars=no, resizable=no,location=no, status=no"
 				var new_win=window.open(url,targetWinName,features);
