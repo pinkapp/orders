@@ -2,6 +2,8 @@ package com.sky.framework.dao;
 
 import java.util.List;
 
+import com.sky.model.Attachment;
+
 public interface CommonsDao{
 	
 	public String login(String userName, String userPw, int userType);
@@ -25,4 +27,6 @@ public interface CommonsDao{
 	public List zuoyeAll();
 	
 	public void save(Object entity);
+	public void update(Object entity);
+
 }

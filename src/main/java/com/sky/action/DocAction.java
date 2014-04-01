@@ -102,10 +102,15 @@ public class DocAction extends BaseAction {
 	}
 
 	private String zuoyeAdd() {
+		System.out.println("-------attachmentId:" + attachmentId);
 		Attachment attachment = entityManager.find(Attachment.class,
 				attachmentId);
 		Tdoc doc = new Tdoc(mingcheng, fujian, fujianYuanshiming, "no");
-		doc.addAttachment(attachment);
+		if (attachment != null) {
+			attachment.setDoc(doc);
+			//doc.addAttachment(attachment);
+			commonsDao.update(attachment);
+		}
 		doc.setType("zuoye");
 		commonsDao.save(doc);
 		message = "操作成功";

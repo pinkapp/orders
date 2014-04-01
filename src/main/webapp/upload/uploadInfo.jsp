@@ -13,9 +13,10 @@ ${attachments }
 </div>
 <script language="javascript">
 	var attachments = eval('${attachments}');
-	window.parent.document.getElementById("achementId").value = attachments[0].id;
-	window.parent.document.getElementById("fujian").value = attachments[0].name;
-	alert(attachments[0].name);
+	window.parent.uploadCallback(attachments);
+	//window.parent.document.getElementById("achementId").value = attachments[0].id;
+	//window.parent.document.getElementById("fujian").value = attachments[0].name;
+	//alert(attachments[0].name);
 </script>
 </body>
 </html>

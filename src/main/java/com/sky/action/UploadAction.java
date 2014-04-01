@@ -29,7 +29,7 @@ public class UploadAction extends BaseAction {
 
 	public String upload() throws IOException {
 		String targetDirectory = ServletActionContext.getServletContext()
-				.getRealPath("/upload");
+				.getRealPath("/attachment");
 		List<Attachment> list  = new ArrayList<Attachment>();
 		for (File f : fujian) {
 			String targetFileName = UUID.randomUUID().toString();

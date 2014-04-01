@@ -94,14 +94,20 @@ public class CommonsDaoImpl extends JpaDaoSupport implements CommonsDao {
 		String hql = "select t from Tgonggao t";
 		return getJpaTemplate().find(hql);
 	}
-	
+
 	public List newsAll() {
 		String hql = "select t from Tnews t";
 		return getJpaTemplate().find(hql);
 	}
+
 	@Transactional
 	public void save(Object entity) {
 		getJpaTemplate().persist(entity);
+	}
+
+	@Transactional
+	public void update(Object entity) {
+		getJpaTemplate().merge(entity);
 	}
 
 	public List zuoyeAll() {
