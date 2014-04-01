@@ -37,7 +37,7 @@ public class Tdoc {
 	private String del;
 
 	@OneToMany(targetEntity = Attachment.class, mappedBy = "doc", fetch = FetchType.LAZY)
-	@Cascade(value = (org.hibernate.annotations.CascadeType.ALL))
+	@Cascade(value = (org.hibernate.annotations.CascadeType.MERGE))
 	private Set<Attachment> attachments;
 
 	// Constructors

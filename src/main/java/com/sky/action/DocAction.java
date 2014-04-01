@@ -108,7 +108,7 @@ public class DocAction extends BaseAction {
 		Tdoc doc = new Tdoc(mingcheng, fujian, fujianYuanshiming, "no");
 		if (attachment != null) {
 			attachment.setDoc(doc);
-			//doc.addAttachment(attachment);
+			doc.addAttachment(attachment);
 			commonsDao.update(attachment);
 		}
 		doc.setType("zuoye");
