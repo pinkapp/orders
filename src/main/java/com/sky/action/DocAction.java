@@ -1,8 +1,10 @@
 package com.sky.action;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import com.sky.framework.BaseAction;
 import com.sky.framework.dao.CommonsDao;
+import com.sky.model.Attachment;
 import com.sky.model.Tdoc;
 
 @Controller
@@ -18,6 +21,8 @@ public class DocAction extends BaseAction {
 
 	@Autowired
 	private CommonsDao commonsDao;
+	@PersistenceContext
+	private EntityManager entityManager;
 	private List gonggaoList;
 	private List newsList;
 	private List zuoyeList;
@@ -26,10 +31,9 @@ public class DocAction extends BaseAction {
 	private String fujian;
 	private String fujianYuanshiming;
 	private String path;
+	private Integer attachmentId;
 
 	public String doc() throws IOException {
-		gonggaoList = commonsDao.gonggaoAll();
-		newsList = commonsDao.newsAll();
 		if (type.endsWith("zuoyeAdd")) {
 			return zuoyeAdd();
 		}
@@ -90,12 +94,18 @@ public class DocAction extends BaseAction {
 
 	private String zuoyeMana() {
 		zuoyeList = commonsDao.zuoyeAll();
+		for (Object o : zuoyeList) {
+			Tdoc doc = (Tdoc) (o);
+			doc.getAttachments();
+		}
 		return "zuoyeMana";
 	}
 
 	private String zuoyeAdd() {
-		String id = String.valueOf(new Date().getTime());
+		Attachment attachment = entityManager.find(Attachment.class,
+				attachmentId);
 		Tdoc doc = new Tdoc(mingcheng, fujian, fujianYuanshiming, "no");
+		doc.addAttachment(attachment);
 		doc.setType("zuoye");
 		commonsDao.save(doc);
 		message = "操作成功";
@@ -138,4 +148,13 @@ public class DocAction extends BaseAction {
 	public void setPath(String path) {
 		this.path = path;
 	}
+
+	public void setAttachmentId(Integer attachmentId) {
+		this.attachmentId = attachmentId;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
 }

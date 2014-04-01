@@ -1,4 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isELIgnored="false" %> 
@@ -103,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</TR>
 								<TR align="left" height="200">
 									<TD>
-									    <form action="<%=path %>/doc?type=zuoyeAdd" name="form1" method="post">
+									    <form action="<%=path %>/doc.do?type=zuoyeAdd" name="form1" method="post">
 									    <table width="99%" border="0" cellpadding="2" cellspacing="1" bgcolor="#FFFFFF" align="center" style="margin-top:8px">
 								              <tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">
 												    <td width="15%" bgcolor="#FFFFFF" align="center">
@@ -118,9 +119,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												        附件：
 												    </td>
 												    <td width="85%" bgcolor="#FFFFFF" align="left">
+												        <s:hidden name="attachmentId" id="attachmentId" value="0"></s:hidden>
 												        <input type="text" name="fujian" id="fujian" size="30" readonly="readonly"/>
 												        <input type="button" value="上传" onclick="up()"/>
-												        <input type="hidden" name="fujianYuanshiming" id="fujianYuanshiming"/>
 												    </td>
 												</tr>
 												<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='red';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22">

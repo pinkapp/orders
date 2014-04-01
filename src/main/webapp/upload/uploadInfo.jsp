@@ -9,9 +9,13 @@ ${message }
 <div style="display: none;">
 ${fujianFileName }
 ${fujianContentType }
+${attachments }
 </div>
 <script language="javascript">
-	alert('${attachmentIds}');
+	var attachments = eval('${attachments}');
+	window.parent.document.getElementById("achementId").value = attachments[0].id;
+	window.parent.document.getElementById("fujian").value = attachments[0].name;
+	alert(attachments[0].name);
 </script>
 </body>
 </html>

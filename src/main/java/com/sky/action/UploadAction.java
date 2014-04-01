@@ -25,12 +25,12 @@ public class UploadAction extends BaseAction {
 	private List<File> fujian;
 	private List<String> fujianFileName;
 	private List<String> fujianContentType;
-	private String attachmentIds;
+	private String attachments;
 
 	public String upload() throws IOException {
 		String targetDirectory = ServletActionContext.getServletContext()
 				.getRealPath("/upload");
-		List<Integer> ids  = new ArrayList<Integer>();
+		List<Attachment> list  = new ArrayList<Attachment>();
 		for (File f : fujian) {
 			String targetFileName = UUID.randomUUID().toString();
 			File target = new File(targetDirectory, targetFileName);
@@ -40,9 +40,9 @@ public class UploadAction extends BaseAction {
 					fujianFileName.get(index), fujianContentType.get(index),
 					targetFileName);
 			commonsDao.save(attachment);
-			ids.add(attachment.getId());
+			list.add(attachment);
 		}
-		attachmentIds = new JSONArray(ids).toString();
+		attachments = new JSONArray(list).toString();
 		message = "上传成功";
 		return SUCCESS;
 	}
@@ -67,8 +67,10 @@ public class UploadAction extends BaseAction {
 		return fujianContentType;
 	}
 
-	public String getAttachmentIds() {
-		return attachmentIds;
+	public String getAttachments() {
+		return attachments;
 	}
+
+	
 
 }
