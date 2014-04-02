@@ -93,7 +93,7 @@ public class DocAction extends BaseAction {
 	}
 
 	private String zuoyeMana() {
-		zuoyeList = commonsDao.zuoyeAll();
+		zuoyeList = commonsDao.findZuoyeAll();
 		return "zuoyeMana";
 	}
 

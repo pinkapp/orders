@@ -85,14 +85,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								              </tr>
 											  <c:forEach items="${requestScope.zuoyeList}" var="zuoye">
 											  <tr align='center' bgcolor="#FFFFFF" height="22">
-												  <td>${zuoye.mingcheng}</td>
+												  <td>${zuoye.name}</td>
 												  <td>
-												  <c:forEach items="${zuoye.attachments}" var="attachement">
-												  	${attachement.name}  
-												  </c:forEach>
-												  ${zuoye.attachments}
+												  ${zuoye.attachmentName}
 												  </td>
-												  <td><a href="#" onclick="down1('${zuoye.fujian}','${zuoye.fujianYuanshiming}')" style="font-size: 10px;color: red">down</a></td>
+												  <td><a href="#" onclick="down1('${zuoye.attachmentSavedName}','${zuoye.attachmentName}')" style="font-size: 10px;color: red">down</a></td>
 											  </tr>
 											  </c:forEach>
 				        			    </table>

@@ -121,4 +121,10 @@ public class CommonsDaoImpl extends JpaDaoSupport implements CommonsDao {
 		}
 		return list;
 	}
+
+	public List findZuoyeAll() {
+		String hql = "select new com.sky.dto.DocDto(t) from Tdoc t where t.type = 'zuoye' and t.del = 'no'";
+		List list = getJpaTemplate().find(hql);
+		return list;
+	}
 }

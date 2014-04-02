@@ -29,4 +29,6 @@ public interface CommonsDao{
 	public void persist(Object entity);
 	public void merge(Object entity);
 
+	public List findZuoyeAll();
+
 }

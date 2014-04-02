@@ -7,19 +7,21 @@ String path = request.getContextPath();
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-  <head>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-  </head>
-  
-  <body> 
-      <% 
+<head>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+</head>
+
+<body>
+	<% 
              
           java.io.BufferedInputStream bis = null;     
           java.io.BufferedOutputStream bos = null;     
-          try {     
+          try {
         	  String filePath=request.getParameter("fujianPath");
+        	  filePath = request.getRealPath("/attachment/"+filePath);
+        	  System.out.println(filePath);
               String fileName=request.getParameter("fujianYuashiMing");
               fileName=URLDecoder.decode(fileName,"UTF-8");
               long fileLength = new File(filePath).length();     
@@ -28,8 +30,6 @@ String path = request.getContextPath();
               response.setHeader("Content-disposition", "attachment; filename=" + fileName);     
               response.setHeader("Content-Length", String.valueOf(fileLength));     
               response.setContentType("text/html;charset=utf-8"); 
-              filePath = request.getRealPath(filePath);
-              System.out.println(filePath);
               bis = new BufferedInputStream(new FileInputStream(filePath));     
               bos = new BufferedOutputStream(response.getOutputStream());     
               byte[] buff = new byte[2048];     
@@ -45,8 +45,8 @@ String path = request.getContextPath();
               if (bos != null)     
                   bos.close();     
           }     
-      %> 
+      %>
 
-      
-  </body>
+
+</body>
 </html>
