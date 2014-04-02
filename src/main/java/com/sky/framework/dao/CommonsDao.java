@@ -26,7 +26,7 @@ public interface CommonsDao{
 	
 	public List zuoyeAll();
 	
-	public void save(Object entity);
-	public void update(Object entity);
+	public void persist(Object entity);
+	public void merge(Object entity);
 
 }

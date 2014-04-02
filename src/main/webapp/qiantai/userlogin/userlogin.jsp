@@ -70,11 +70,11 @@ String path = request.getContextPath();
 			          </tr>
 			          <tr>
 			            <td align="right" width="31%" height="30" style="font-size: 11px;">用户名：</td>
-			            <td align="left" width="69%"><input class="input" title="用户名不能为空" size="14" name="userName" type="text" /></td>
+			            <td align="left" width="69%"><input class="input" title="用户名不能为空" size="14" name="userName" type="text" value="000000" /></td>
 			          </tr>
 			          <tr>
 			            <td align="right" height="30" style="font-size: 11px;">密　码：</td>
-			            <td align="left"><input class="input" title="密码不能为空" type="password" size="16" name="userPw"/></td>
+			            <td align="left"><input class="input" title="密码不能为空" type="password" size="16" name="userPw" value="000000"/></td>
 			          </tr>
 			          <tr>
 			            <td align="right" height="30" style="font-size: 11px;">登陆身份：</td>

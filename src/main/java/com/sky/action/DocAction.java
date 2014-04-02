@@ -94,25 +94,20 @@ public class DocAction extends BaseAction {
 
 	private String zuoyeMana() {
 		zuoyeList = commonsDao.zuoyeAll();
-		for (Object o : zuoyeList) {
-			Tdoc doc = (Tdoc) (o);
-			doc.getAttachments();
-		}
 		return "zuoyeMana";
 	}
 
 	private String zuoyeAdd() {
-		System.out.println("-------attachmentId:" + attachmentId);
+		//System.out.println("-------attachmentId:" + attachmentId);
 		Attachment attachment = entityManager.find(Attachment.class,
 				attachmentId);
 		Tdoc doc = new Tdoc(mingcheng, fujian, fujianYuanshiming, "no");
 		if (attachment != null) {
 			attachment.setDoc(doc);
 			doc.addAttachment(attachment);
-			commonsDao.update(attachment);
 		}
 		doc.setType("zuoye");
-		commonsDao.save(doc);
+		commonsDao.merge(doc);
 		message = "操作成功";
 		path = "doc.do?type=zuoyeMana";
 		return SUCCESS;

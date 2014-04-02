@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sky.framework.dao.CommonsDao;
 import com.sky.model.TAdmin;
+import com.sky.model.Tdoc;
 
 public class CommonsDaoImpl extends JpaDaoSupport implements CommonsDao {
 	public String login(String userName, String userPw, int userType) {
@@ -101,17 +102,23 @@ public class CommonsDaoImpl extends JpaDaoSupport implements CommonsDao {
 	}
 
 	@Transactional
-	public void save(Object entity) {
+	public void persist(Object entity) {
 		getJpaTemplate().persist(entity);
 	}
 
 	@Transactional
-	public void update(Object entity) {
+	public void merge(Object entity) {
 		getJpaTemplate().merge(entity);
 	}
 
 	public List zuoyeAll() {
 		String hql = "select t from Tdoc t where t.type = 'zuoye' and t.del = 'no'";
-		return getJpaTemplate().find(hql);
+		List list = getJpaTemplate().find(hql);
+		for (Object o : list) {
+			Tdoc doc = (Tdoc) (o);
+			doc.getAttachments();
+			System.out.println(doc.getAttachments());
+		}
+		return list;
 	}
 }

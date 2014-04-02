@@ -39,7 +39,7 @@ public class UploadAction extends BaseAction {
 			Attachment attachment = Attachment.create(
 					fujianFileName.get(index), fujianContentType.get(index),
 					targetFileName);
-			commonsDao.save(attachment);
+			commonsDao.persist(attachment);
 			list.add(attachment);
 		}
 		attachments = new JSONArray(list).toString();
