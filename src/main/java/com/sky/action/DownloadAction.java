@@ -1,5 +1,8 @@
 package com.sky.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -18,9 +21,10 @@ public class DownloadAction extends BaseAction {
 	private String fujianPath;
 	private String fujianYuashiMing;
 
-	public InputStream getInputStream() {
-		return ServletActionContext.getServletContext().getResourceAsStream(
-				"/attachment/" + fujianPath);
+	public InputStream getInputStream() throws FileNotFoundException {
+		String targetDirectory = ServletActionContext.getServletContext()
+				.getRealPath("/attachment/");
+		return new FileInputStream(new File(targetDirectory, fujianPath));
 	}
 
 	public String download() throws IOException {
