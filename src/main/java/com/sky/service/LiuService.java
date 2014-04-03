@@ -12,7 +12,7 @@ import com.sky.model.Tstu;
 import com.sky.model.Ttea;
 import com.sky.model.Tzhuanye;
 
-public class liuService extends JpaDaoSupport {
+public class LiuService extends JpaDaoSupport {
 	public String getZhuanyeName(int id) {
 		return getJpaTemplate().find(Tzhuanye.class, id).getName();
 	}
@@ -39,18 +39,16 @@ public class liuService extends JpaDaoSupport {
 
 	public boolean getTeabyjiaoshihao(String jiaoshihao) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("del", "no");
 		params.put("bianhao", jiaoshihao);
-		String hql = "select t from Ttea t where t.del = :del and t.bianhao = :bianhao";
+		String hql = "select t from Ttea t where t.bianhao = :bianhao";
 		List list = getJpaTemplate().findByNamedParams(hql, params);
 		return !list.isEmpty();
 	}
 
 	public boolean getStubyxuehao(String xuehao) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("del", "no");
 		params.put("bianhao", xuehao);
-		String hql = "select t from Tstu t where t.del = :del and t.bianhao = :bianhao";
+		String hql = "select t from Tstu t where t.xuehao = :bianhao";
 		List list = getJpaTemplate().findByNamedParams(hql, params);
 		return !list.isEmpty();
 	}

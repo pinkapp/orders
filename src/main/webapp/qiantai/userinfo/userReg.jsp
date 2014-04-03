@@ -46,7 +46,7 @@ String path = request.getContextPath();
         </script>
 	</head>
 	<body>
-			<form action="<%=path %>/user?type=userReg" name="form1" method="post">
+			<form action="<%=path %>/user.do?type=userReg" name="form1" method="post">
 				<table width="98%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 					<tr>
 						<th height="40" colspan="2" bgcolor="#FFFFFF" class="f12b-red" style="font-size: 11px;">

@@ -63,7 +63,7 @@ String path = request.getContextPath();
   
   <body>
        <c:if test="${sessionScope.user==null}">
-			<form action="<%=path %>/user?type=userLogin" name="ThisForm" method="post">
+			<form action="<%=path %>/user.do?type=userLogin" name="ThisForm" method="post">
 			      <table cellspacing="0" cellpadding="0" width="98%" align="center" border="0">
 			          <tr>
 			            <td align="center" colspan="2" height="10"></td>
@@ -104,7 +104,7 @@ String path = request.getContextPath();
 		    <c:if test="${sessionScope.user!=null}">
 		        <br/>
 			     欢迎您：${sessionScope.user.loginname } &nbsp;&nbsp;&nbsp;&nbsp;
-			    <a href="<%=path %>/user?type=userLogout">安全退出</a> &nbsp;&nbsp;&nbsp;&nbsp;
+			    <a href="<%=path %>/user.do?type=userLogout">安全退出</a> &nbsp;&nbsp;&nbsp;&nbsp;
 			    <br/><br/><br/>
 			</c:if>
   </body>

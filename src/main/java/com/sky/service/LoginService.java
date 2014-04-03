@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.support.JpaDaoSupport;
 
 import com.sky.model.TAdmin;
 
-public class loginService extends JpaDaoSupport {
+public class LoginService extends JpaDaoSupport {
 	public String login(String userName, String userPw, int userType) {
 		String result = "no";
 

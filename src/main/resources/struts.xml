@@ -40,5 +40,9 @@
 			<result name="shipinMana">/admin/shipin/shipinMana.jsp</result>
 			<result name="shipinAll">/qiantai/shipin/shipinAll.jsp</result>
 		</action>
+		<action name="user" class="userAction" method="user">
+			<result name="regSuccess">/common/add_success.jsp</result>
+			<result name="logout">/qiantai/default.jsp</result>
+		</action>
 	</package>
 </struts>
