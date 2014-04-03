@@ -11,8 +11,8 @@
 	<constant name="struts.custom.i18n.resources" value="messageResource" />
 	<!--设置编码形式 -->
 	<constant name="struts.i18n.encoding" value="utf-8" />
-	<constant name="struts.action.extension" value="do"/>
-	<constant name="struts.multipart.saveDir" value="tmp"/>
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.multipart.saveDir" value="tmp" />
 	<include file="struts-root.xml" />
 	<include file="struts-gets.xml" />
 	<include file="struts-add.xml" />
@@ -21,6 +21,14 @@
 		<action name="info" class="infoAction" method="info" />
 		<action name="upload" class="uploadAction" method="upload">
 			<result>/upload/uploadInfo.jsp</result>
+		</action>
+		<action name="download" class="downloadAction" method="download">
+			<result type="stream">
+				<param name="contentType">application/x-msdownload;charset=utf-8</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${fujianYuashiMing}"</param>
+				<param name="bufferSize">4096</param>
+			</result>
 		</action>
 		<action name="index" class="indexAction" method="index">
 			<result>/qiantai/index.jsp</result>
