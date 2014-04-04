@@ -110,6 +110,11 @@ public class CommonsDaoImpl extends JpaDaoSupport implements CommonsDao {
 	public void merge(Object entity) {
 		getJpaTemplate().merge(entity);
 	}
+	
+	@Transactional
+	public void remove(Object entity) {
+		getJpaTemplate().remove(entity);
+	}
 
 	public List zuoyeAll() {
 		String hql = "select t from Tdoc t where t.type = 'zuoye' and t.del = 'no'";
@@ -124,6 +129,13 @@ public class CommonsDaoImpl extends JpaDaoSupport implements CommonsDao {
 
 	public List findZuoyeAll() {
 		String hql = "select new com.sky.dto.DocDto(t) from Tdoc t where t.type = 'zuoye' and t.del = 'no'";
+		List list = getJpaTemplate().find(hql);
+		return list;
+	}
+
+	@Override
+	public List findAdminAll() {
+		String hql = "select t from TAdmin t";
 		List list = getJpaTemplate().find(hql);
 		return list;
 	}

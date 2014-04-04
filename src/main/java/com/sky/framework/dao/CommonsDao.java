@@ -27,8 +27,13 @@ public interface CommonsDao{
 	public List zuoyeAll();
 	
 	public void persist(Object entity);
+	
 	public void merge(Object entity);
+	
+	public void remove(Object entity);
 
 	public List findZuoyeAll();
+
+	public List findAdminAll();
 
 }
