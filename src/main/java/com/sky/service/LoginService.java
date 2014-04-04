@@ -29,7 +29,7 @@ public class LoginService extends JpaDaoSupport {
 				WebContext ctx = WebContextFactory.get();
 				HttpSession session = ctx.getSession();
 				session.setAttribute("admin", users.get(0));
-				session.setAttribute("type", userType);
+				session.setAttribute("userType", userType);
 				result = "yes";
 			}
 		} else {
@@ -45,7 +45,7 @@ public class LoginService extends JpaDaoSupport {
 				WebContext ctx = WebContextFactory.get();
 				HttpSession session = ctx.getSession();
 				session.setAttribute("user", users.get(0));
-				session.setAttribute("type", userType);
+				session.setAttribute("userType", userType);
 				result = "yes";
 			}
 		}

@@ -1,6 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="sun.management.ManagementFactory" %>
-<%@ page import="com.sun.management.OperatingSystemMXBean" %>
 <%
 String path = request.getContextPath();
 %>
