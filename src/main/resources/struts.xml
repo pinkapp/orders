@@ -16,15 +16,15 @@
 	<include file="struts-root.xml" />
 	<include file="struts-gets.xml" />
 	<include file="struts-add.xml" />
-	<package name="struts-root" extends="struts-default" namespace="/">
+	<package name="struts-root" extends="struts-default">
+	    <global-results>
+			<result>/common/success.jsp</result>
+		</global-results>
 		<action name="version" class="infoAction" method="version" />
 		<action name="info" class="infoAction" method="info" />
 		<action name="upload" class="uploadAction" method="upload">
 			<result>/upload/uploadInfo.jsp</result>
 		</action>
-		<global-results>
-			<result>/common/success.jsp</result>
-		</global-results>
 		<action name="download" class="downloadAction" method="download">
 			<result type="stream">
 				<param name="contentType">application/x-msdownload;charset=utf-8</param>
