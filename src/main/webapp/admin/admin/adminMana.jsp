@@ -22,7 +22,7 @@ String path = request.getContextPath();
            {
                if(confirm('您确定删除吗？'))
                {
-                   window.location.href="<%=path %>/admin?type=adminDel&userId="+userId;
+                   window.location.href="<%=path %>/admin.do?type=adminDel&userId="+userId;
                }
            }
            
