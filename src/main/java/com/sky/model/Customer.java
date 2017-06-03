@@ -21,7 +21,7 @@ public class Customer implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date birthday;
 	@OneToMany(mappedBy = "customer")
-	private final List<Address> addresses = new ArrayList<Address>();
+	private List<Address> addresses = new ArrayList<Address>();
 	
 	public int getId() {
 		return id;

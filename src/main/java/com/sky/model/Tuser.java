@@ -14,7 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Tuser implements Serializable
 {
 	@Id
-	@GeneratedValue(generator = "generator")    
+	//@GeneratedValue(generator = "generator")    
 	@GenericGenerator(name = "generator", strategy = "uuid")  
 	private String id;
 	private String loginname;
