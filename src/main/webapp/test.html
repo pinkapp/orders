@@ -11,6 +11,13 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<style type="text/css">
+	
+	  html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+      
       body {
         /* padding-top: 60px;
         padding-bottom: 40px; */
@@ -28,6 +35,16 @@
 	    -webkit-user-drag: none;
 	    -webkit-user-select: none;
       }
+      
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+      
       .my-top {
       	position:fixed;
       	top:0;
@@ -35,14 +52,45 @@
 	    -moz-opacity:0.9; /* Firefox  有效*/
 	    opacity: 0.9; /* 通用，其他浏览器  有效*/
       }
+      
       .my-bottom {
       	position:fixed;
       	bottom:0;
       }
+      
       #container{
 	  min-width:600px;
 	  min-height:767px;
 	  }
+	  
+	  /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container .credit {
+        margin: 20px 0;
+      }
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,17 +109,21 @@
 	<nav class="navbar navbar-default navbar-fixed-top my-top">
 	  <div class="navbar-inner">
         <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <!--  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">京东到家</a>
-          <div class="nav-collapse collapse">
+          </button> -->
+          <!-- <a class="brand" href="#">京东到家</a> -->
+          <a class="brand" href="#" onclick="chooseAdd();" >SELECT</a>
+          <form class="navbar-search pull-left">
+		    <input type="text" class="search-query" placeholder="Search">
+		  </form>
+          <!-- <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <!-- <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li> -->
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -90,7 +142,7 @@
               <input class="span2" type="password" placeholder="Password">
               <button type="submit" class="btn">Sign in</button>
             </form>
-          </div><!--/.nav-collapse -->
+          </div> --><!--/.nav-collapse -->
         </div>
       </div>
 	</nav>
@@ -138,41 +190,52 @@
          <p><a class="btn" href="#">View details &raquo;</a></p>
        </div>
     </div>
-    </div>
-	
-	<nav class="navbar navbar-default navbar-fixed-bottom my-bottom">
-	  <div class="container">
-		  <div class="row">
-			  <div class="span4">module:<label id="module"></label></div>
-			  <div class="span4">lat:<label id="lat"></label></div>
-			  <div class="span4">lng:<label id="lng"></label></div>
-			  <div class="span4">poiaddress:<label id="poiaddress"></label></div>
-			  <div class="span4">poiname:<label id="poiname"></label></div>
-			  <div class="span4">cityname:<label id="cityname"></label></div>
-		  </div>
-	  </div>
-	</nav>
+    <div class="row">
+	  <div class="span4">module:<label id="module"></label></div>
+	  <div class="span4">lat:<label id="lat"></label></div>
+	  <div class="span4">lng:<label id="lng"></label></div>
+	  <div class="span4">poiaddress:<label id="poiaddress"></label></div>
+	  <div class="span4">poiname:<label id="poiname"></label></div>
+	  <div class="span4">cityname:<label id="cityname"></label></div>
 	</div>
+    </div><!-- /.wrap -->
+	
+	<!-- <nav class="navbar navbar-default navbar-fixed-bottom my-bottom">
+	  <div class="container">
+		  
+	  </div>
+	</nav> -->
+	<div id="push"></div>
+	</div>
+	
+	
+	<div id="footer">
+      <div class="container">
+        <p class="muted credit">Power by <a href="#">Hunter</a>.</p>
+      </div>
+    </div>
 	
 	<script>
 		function chooseAdd(){
-			var ifra ='<iframe id="mapPage" width="100%" height="800" frameborder=0 src="http://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp"></iframe>'
+			var ifra ='<iframe id="mapPage" width="100%" height="800" frameborder=0 src="https://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp"></iframe>'
 			$("body").append(ifra);
 			$("#wrap").hide();
+			$("#footer").hide();
 	    }
 	    window.addEventListener('message', function(event) {
 	        // 接收位置信息，用户选择确认位置点后选点组件会触发该事件，回传用户的位置信息
 	        var loc = event.data;
 	        if (loc && loc.module == 'locationPicker') {//防止其他应用也会向该页面post信息，需判断module是否为'locationPicker'
 	          console.log('location', loc); 
-	        $("#module").html(loc.module);
-	        $("#lat").html(loc.latlng.lat);
-	        $("#lng").html(loc.latlng.lng);
-	        $("#poiaddress").html(loc.poiaddress);
-	        $("#poiname").html(loc.poiname);
-	        $("#cityname").html(loc.cityname);
+	          $("#module").html(loc.module);
+	          $("#lat").html(loc.latlng.lat);
+	          $("#lng").html(loc.latlng.lng);
+	          $("#poiaddress").html(loc.poiaddress);
+	          $("#poiname").html(loc.poiname);
+	          $("#cityname").html(loc.cityname);
 	          $("#mapPage").remove();
 	          $("#wrap").show();
+	          $("#footer").show();
 	        }                                
 	    }, false); 
 	</script>
