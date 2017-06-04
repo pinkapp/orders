@@ -9,7 +9,7 @@ public abstract class AbstractEntity {
 	private Long id;
 
 	@Id
-	//@javax.persistence.GeneratedValue(generator = "idGenerator")
+	@javax.persistence.GeneratedValue(generator = "idGenerator")
 	@org.hibernate.annotations.GenericGenerator(strategy = "native", name = "idGenerator")
 	@Column(name = "ID", unique = true, nullable = false, scale = 0)
 	public Long getId() {
