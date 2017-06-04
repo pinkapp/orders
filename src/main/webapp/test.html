@@ -12,8 +12,8 @@
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
 	<style type="text/css">
       body {
-        padding-top: 60px;
-        padding-bottom: 40px;
+        /* padding-top: 60px;
+        padding-bottom: 40px; */
         
         /* margin: 0; */
 	    /* padding: 0; */
@@ -57,6 +57,7 @@
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
   <body onLoad="getLocation()">
+    <div id="wrap">
 	<nav class="navbar navbar-default navbar-fixed-top my-top">
 	  <div class="navbar-inner">
         <div class="container">
@@ -69,12 +70,12 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <!-- <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li> -->
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
+                  <li><a href="#" onclick="chooseAdd();">选择地点</a></li>
                   <li><a href="#">Another action</a></li>
                   <li><a href="#">Something else here</a></li>
                   <li class="divider"></li>
@@ -93,7 +94,7 @@
         </div>
       </div>
 	</nav>
-	<div class="container">
+	<div class="container" style="padding-top: 60px;">
     <div class="row">
        <!-- <div id="container" class="span12"></div> -->
        <div class="span4">
@@ -141,20 +142,37 @@
 	
 	<nav class="navbar navbar-default navbar-fixed-bottom my-bottom">
 	  <div class="container">
-	  BOTTOM
+		  <div class="row">
+			  <div class="span4">module:<label id="module"></label></div>
+			  <div class="span4">lat:<label id="lat"></label></div>
+			  <div class="span4">lng:<label id="lng"></label></div>
+			  <div class="span4">poiaddress:<label id="poiaddress"></label></div>
+			  <div class="span4">poiname:<label id="poiname"></label></div>
+			  <div class="span4">cityname:<label id="cityname"></label></div>
+		  </div>
 	  </div>
 	</nav>
-	<iframe id="mapPage" width="100%" height="100%" frameborder=0 
-    src="http://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
-	</iframe> 
-	 
+	</div>
+	
 	<script>
+		function chooseAdd(){
+			var ifra ='<iframe id="mapPage" width="100%" height="800" frameborder=0 src="http://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp"></iframe>'
+			$("body").append(ifra);
+			$("#wrap").hide();
+	    }
 	    window.addEventListener('message', function(event) {
 	        // 接收位置信息，用户选择确认位置点后选点组件会触发该事件，回传用户的位置信息
 	        var loc = event.data;
 	        if (loc && loc.module == 'locationPicker') {//防止其他应用也会向该页面post信息，需判断module是否为'locationPicker'
-	          console.log('location', loc);  
-	          alert(loc.poiaddress);
+	          console.log('location', loc); 
+	        $("#module").html(loc.module);
+	        $("#lat").html(loc.latlng.lat);
+	        $("#lng").html(loc.latlng.lng);
+	        $("#poiaddress").html(loc.poiaddress);
+	        $("#poiname").html(loc.poiname);
+	        $("#cityname").html(loc.cityname);
+	          $("#mapPage").remove();
+	          $("#wrap").show();
 	        }                                
 	    }, false); 
 	</script>
@@ -164,6 +182,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&libraries=convertor"></script>
     <script>
+    
 	function getLocation(){
 	  //判断是否支持 获取本地位置
 	  if (navigator.geolocation)
@@ -194,6 +213,5 @@
 	  }
 	</script>
 
-</head>
   </body>
 </html>
