@@ -84,6 +84,7 @@
 	</listener>
 	
 	<welcome-file-list>
+		<welcome-file>/test.html</welcome-file>
 		<welcome-file>/qiantai/default.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

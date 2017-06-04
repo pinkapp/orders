@@ -9,14 +9,37 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
-    <style type="text/css">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
+        
+        /* margin: 0; */
+	    /* padding: 0; */
+	    font-family: 'Microsoft YaHei',Verdana,Arial,Helvetica,sans-serif;
+	    color: #3c3c3c;
+	    font-size: 14px;
+	    line-height: 1.4;
+	    /* background-color: #f4f4f4; */
+	    word-wrap: break-word;
+	    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	    -webkit-touch-callout: none;
+	    -webkit-user-drag: none;
+	    -webkit-user-select: none;
+      }
+      .my-top {
+      	position:fixed;
+      	top:0;
+	    filter:alpha(opacity=90);  /* ie 有效*/
+	    -moz-opacity:0.9; /* Firefox  有效*/
+	    opacity: 0.9; /* 通用，其他浏览器  有效*/
+      }
+      .my-bottom {
+      	position:fixed;
+      	bottom:0;
       }
     </style>
-	<link href="css/bootstrap-responsive.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,8 +52,8 @@
     <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
-  <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+  <body onLoad="getLocation()">
+	<nav class="navbar navbar-default navbar-fixed-top my-top">
 	  <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -38,7 +61,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">京东到家</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -68,6 +91,7 @@
 	</nav>
 	<div class="container">
     <div class="row">
+       <div id="container" class="span12"></div>
        <div class="span4">
          <h2>Heading</h2>
          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
@@ -111,15 +135,47 @@
     </div>
     </div>
 	
-	<nav class="navbar navbar-default navbar-fixed-bottom">
+	<nav class="navbar navbar-default navbar-fixed-bottom my-bottom">
 	  <div class="container">
 	  BOTTOM
 	  </div>
 	</nav>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&libraries=convertor"></script>
+    <script>
+	function getLocation(){
+	  //判断是否支持 获取本地位置
+	  if (navigator.geolocation)
+	    {
+	    navigator.geolocation.getCurrentPosition(showPosition);
+	    }
+	  else{x.innerHTML="浏览器不支持定位.";}
+	  }
+	function showPosition(position)
+	  {
+	var lat=position.coords.latitude; 
+	var lng=position.coords.longitude;
+	//调用地图命名空间中的转换接口   type的可选值为 1:GPS经纬度，2:搜狗经纬度，3:百度经纬度，4:mapbar经纬度，5:google经纬度，6:搜狗墨卡托
+	qq.maps.convertor.translate(new qq.maps.LatLng(lat,lng), 1, function(res){
+	  //取出经纬度并且赋值
+	     latlng = res[0];
+	  
+	  var map = new qq.maps.Map(document.getElementById("container"),{
+	        center:  latlng,
+	        zoom: 13
+	    });
+	    //设置marker标记
+	   var marker = new qq.maps.Marker({
+	            map : map,
+	            position : latlng
+	        });
+	    });
+	  }
+	</script>
+
+</head>
   </body>
 </html>
