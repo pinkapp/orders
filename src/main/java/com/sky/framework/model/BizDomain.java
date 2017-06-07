@@ -19,8 +19,8 @@ public class BizDomain extends Domain {
 	@ManyToOne
 	private User creator;
 	
-	@Column(name="desc",length=1000)
-	private String desc;
+	@Column(name="note",length=1000)
+	private String note;
 	
 	@Column(name="if_deleted")
 	private boolean ifDeleted = false;
@@ -41,12 +41,12 @@ public class BizDomain extends Domain {
 		this.creator = creator;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getNote() {
+		return note;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	public boolean isIfDeleted() {
