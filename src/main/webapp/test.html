@@ -48,6 +48,8 @@
       .my-top {
       	position:fixed;
       	top:0;
+      	margin:0;
+      	padding:0;
 	    filter:alpha(opacity=90);  /* ie 有效*/
 	    -moz-opacity:0.9; /* Firefox  有效*/
 	    opacity: 0.9; /* 通用，其他浏览器  有效*/
@@ -116,8 +118,11 @@
           </button> -->
           <!-- <a class="brand" href="#">京东到家</a> -->
           <!-- <a class="brand" href="#" onclick="chooseAdd();" >SELECT</a> -->
-          <form class="navbar-search pull-left">
-		    <input type="text" class="search-query" placeholder="Search">
+          <form class="navbar-search">
+           <i class="icon-map-marker"></i>
+           <span id="address" onclick="chooseAdd();">未知</span>
+           <i class="icon-chevron-down" onclick="chooseAdd();"></i>
+		   <input type="text" class="search-query" placeholder="Search" style="max-width: 150px;">
 		  </form>
           <!-- <div class="nav-collapse collapse">
             <ul class="nav">
@@ -230,6 +235,14 @@
 	          $("#module").html(loc.module);
 	          $("#lat").html(loc.latlng.lat);
 	          $("#lng").html(loc.latlng.lng);
+	          if(loc.poiaddress){
+	        	  if(loc.poiaddress.length > 3){
+	        		  $("#address").html(loc.poiaddress.substring(0,3) + "...");
+	        	  }else{
+	        		  $("#address").html(loc.poiaddress);
+	        	  }
+	          }
+	         
 	          $("#poiaddress").html(loc.poiaddress);
 	          $("#poiname").html(loc.poiname);
 	          $("#cityname").html(loc.cityname);
