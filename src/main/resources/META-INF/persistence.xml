@@ -24,31 +24,36 @@
   </properties> -->
   <!--厂商的特定属性 -->  
   <properties>  
-   <!--配置Hibernate方言 -->  
    <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />  
-   <!--配置数据库驱动 -->  
    <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />  
-   <!--配置数据库用户名 -->  
-   <property name="hibernate.connection.username" value="admin" />  
-   <!--配置数据库密码 -->  
+   <!-- local -->
+   <property name="hibernate.connection.username" value="root" />  
+   <property name="hibernate.connection.password" value="root" />  
+   <property name="hibernate.connection.url" value="jdbc:mysql://192.168.11.133:3306/test?useUnicode=true&amp;characterEncoding=UTF-8" />
+   <!-- remote -->
+   <!-- <property name="hibernate.connection.username" value="admin" />  
    <property name="hibernate.connection.password" value="lrk5dmtEzY-N" />  
-   <!--配置数据库url -->  
-   <property name="hibernate.connection.url" value="jdbc:mysql://127.11.179.1:3306/accts?useUnicode=true&amp;characterEncoding=UTF-8" />  
-   <!--设置外连接抓取树的最大深度 -->  
+   <property name="hibernate.connection.url" value="jdbc:mysql://127.11.179.1:3306/accts?useUnicode=true&amp;characterEncoding=UTF-8" /> -->
+     
    <property name="hibernate.max_fetch_depth" value="3" />  
-   <!--自动输出schema创建DDL语句 -->  
    <property name="hibernate.hbm2ddl.auto" value="update" />   
      
    <property name="hibernate.c3p0.min_size" value="5" />
    <property name="hibernate.c3p0.max_size" value="20" />
    <property name="hibernate.c3p0.timeout" value="300" />
+  	<!--  How long to keep unused connections around(in seconds) 
+	Note: MySQL times out idle connections after 8hours(28,800seconds) 
+	so ensure this value is below MySQL idle timeout  -->
+   <property name="hibernate.c3p0.maxIdleTime" value="25200"/> 
    <property name="hibernate.c3p0.max_statements" value="50" />
-   <property name="hibernate.c3p0.idle_test_period" value="3000" />
    <!-- 每次都验证连接是否可用 -->
    <property name="hibernate.c3p0.validate" value="true"></property>  
+   <!-- Prevent MySQL raise exception after a long idle time -->
+   <property name="hibernate.c3p0.idleConnectionTestPeriod" value="18000"/> 
+   <property name="hibernate.c3p0.testConnectionOnCheckout" value="true"/> 
    <!--解决MYSQL8小时问题 -->
    <property name="hibernate.c3p0.automaticTestTable" value="C3P0Test"></property>
-   <!-- <property name="hibernate.c3p0.preferredTestQuery" value="SELECT 1"></property>  -->
+   <property name="hibernate.c3p0.preferredTestQuery" value="SELECT 1"></property>
   </properties>  
  </persistence-unit>
 
