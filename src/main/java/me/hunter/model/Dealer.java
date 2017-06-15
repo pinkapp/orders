@@ -4,16 +4,18 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.sky.framework.model.Domain;
 
-@Entity(name = "b_dealer")
+@Entity
+@Table(name = "b_dealer")
 public class Dealer extends Domain {
 	
-	@Column(name = "lat")
+	@Column(name = "lat", precision = 23, scale = 6)
 	private BigDecimal lat;
 	
-	@Column(name = "lng")
+	@Column(name = "lng", precision = 23, scale = 6)
 	private BigDecimal lng;
 
 	@Column(name = "disable")

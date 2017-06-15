@@ -10,10 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.sky.framework.model.BizDomain;
 
-@Entity(name = "b_user")
+@Entity
+@Table(name = "b_user")
 public class User extends BizDomain {
 
 	@Column(name = "passwd")

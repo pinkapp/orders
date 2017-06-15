@@ -4,10 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.sky.framework.model.BizDomain;
 
-@Entity(name="b_order")
+@Entity
+@Table(name="b_order")
 public class Order extends BizDomain {
 	
 	@Column(name = "code")

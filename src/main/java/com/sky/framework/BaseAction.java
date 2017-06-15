@@ -10,6 +10,8 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.JpaTemplate;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,6 +27,9 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
 	protected HttpServletResponse response;
 
 	protected Map<String, Object> session;
+	
+	@Autowired
+	protected JpaTemplate jpaTemplate;
 
 	public String getMessage() {
 		return message;

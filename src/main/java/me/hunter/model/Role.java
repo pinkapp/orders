@@ -8,10 +8,12 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.sky.framework.model.BizDomain;
 
-@Entity(name="b_role")
+@Entity
+@Table(name="b_role")
 public class Role extends BizDomain {
 	
 	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)

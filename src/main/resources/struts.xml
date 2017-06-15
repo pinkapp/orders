@@ -6,7 +6,7 @@
 <struts>
 	<constant name="struts.ui.theme" value="simple" />
 	<!--设置开发模式 -->
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
 	<!-- 国际化 -->
 	<constant name="struts.custom.i18n.resources" value="messageResource" />
 	<!--设置编码形式 -->

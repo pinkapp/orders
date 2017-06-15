@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="css/Lobibox.min.css" rel="stylesheet"/>
 	<style type="text/css">
 	
 	  html,
@@ -272,13 +273,27 @@
 	          $("#mapPage").remove();
 	          $("#wrap").show();
 	          $("#footer").show();
+	          doPost({lat:loc.latlng.lat, lng:loc.latlng.lng, name:loc.poiname});
 	        }                                
 	    }, false); 
+	    
+	   function doPost(data){
+		   $.post("dealer/add.shtml",data,function(result){
+			    Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			    		{
+			    		    msg: "success"
+			    		});
+		   	});
+	   }
 	</script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/Lobibox.min.js"></script>
+    <!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
+    <!-- <script src="js/messageboxes.min.js"></script> -->
+    <!-- <script src="js/notifications.min.js"></script> -->
     <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&libraries=convertor"></script>
     <script>
     
