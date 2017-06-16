@@ -279,10 +279,11 @@
 	    
 	   function doPost(data){
 		   $.post("dealer/add.shtml",data,function(result){
-			    Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
-			    		{
-			    		    msg: "success"
-			    		});
+			   Lobibox.notify("success", {
+				    size: 'mini',
+				    title: 'Message',
+				    msg: 'success'
+				});  
 		   	});
 	   }
 	</script>
