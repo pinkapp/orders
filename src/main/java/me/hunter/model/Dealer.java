@@ -12,10 +12,10 @@ import com.sky.framework.model.Domain;
 @Table(name = "b_dealer")
 public class Dealer extends Domain {
 	
-	@Column(name = "lat", precision = 23, scale = 6)
+	@Column(name = "lat", precision = 23, scale = 18)
 	private BigDecimal lat;
 	
-	@Column(name = "lng", precision = 23, scale = 6)
+	@Column(name = "lng", precision = 23, scale = 18)
 	private BigDecimal lng;
 
 	@Column(name = "disable")
