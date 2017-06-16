@@ -95,6 +95,7 @@
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 	<welcome-file-list>
+		<welcome-file>/index.shtml</welcome-file>
 		<welcome-file>/test.html</welcome-file>
 		<welcome-file>/qiantai/default.jsp</welcome-file>
 	</welcome-file-list>

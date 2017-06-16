@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -178,46 +181,14 @@
 	</div>
     <div class="row">
        <!-- <div id="container" class="span12"></div> -->
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+       <c:forEach var="dealer" items="${dealers }">
+       <div class="span12">
+         <h2>${dealer.name }</h2>
+         <p>${dealer.lat }</p>
+         <p>${dealer.lng }</p>
          <p><a class="btn" href="#" onclick="chooseAdd();">View details &raquo;</a></p>
        </div>
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-         <p><a class="btn" href="#" onclick="chooseAdd();">View details &raquo;</a></p>
-       </div>
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-         <p><a class="btn" href="#" onclick="chooseAdd();">View details &raquo;</a></p>
-       </div>
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-         <p><a class="btn" href="#" onclick="chooseAdd();">View details &raquo;</a></p>
-       </div>
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-         <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-         <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-         <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-       <div class="span4">
-         <h2>Heading</h2>
-         <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-         <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
+       </c:forEach>
     </div>
     <div class="row">
 	  <div class="span4">module:<label id="module"></label></div>
@@ -227,10 +198,6 @@
 	  <div class="span4">poiname:<label id="poiname"></label></div>
 	  <div class="span4">cityname:<label id="cityname"></label></div>
 	</div>
-	<div ng-app="">
- 	<p>名字 : <input type="text" ng-model="name"></p>
- 	<h1>Hello {{name}}</h1>
-</div>
     </div><!-- /.wrap -->
 	
 	<!-- <nav class="navbar navbar-default navbar-fixed-bottom my-bottom">
@@ -293,11 +260,9 @@
 	</script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
-    <script src="js/angular.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Lobibox.min.js"></script>
-    <script src="js/system/test.js"></script>
     <!-- If you do not need both (messageboxes and notifications) you can inclue only one of them -->
     <!-- <script src="js/messageboxes.min.js"></script> -->
     <!-- <script src="js/notifications.min.js"></script> -->
