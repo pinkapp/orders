@@ -1,17 +1,23 @@
 package me.hunter.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.sky.framework.model.Domain;
+import me.hunter.framework.model.Domain;
 
 @Entity
 @Table(name = "b_dealer")
 public class Dealer extends Domain {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1741429528182071388L;
+
 	@Column(name = "lat", precision = 23, scale = 18)
 	private BigDecimal lat;
 	
@@ -23,6 +29,9 @@ public class Dealer extends Domain {
 	
 	@Column(name="if_deleted")
 	private boolean ifDeleted = false;
+	
+	@Column(name="create_date")
+	private Date createDate;
 	
 	/**
 	 * BASE64 code
@@ -68,6 +77,14 @@ public class Dealer extends Domain {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	
 	

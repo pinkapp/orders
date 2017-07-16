@@ -36,11 +36,12 @@
      
    <property name="hibernate.max_fetch_depth" value="3" />  
    <property name="hibernate.hbm2ddl.auto" value="create" />
-   <property name="hibernate.show_sql" value="true" />   
-     
-   <property name="hibernate.c3p0.min_size" value="5" />
-   <property name="hibernate.c3p0.max_size" value="20" />
-   <property name="hibernate.c3p0.timeout" value="300" />
+   <property name="hibernate.show_sql" value="true" />
+      
+   <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider"/>  
+   <property name="hibernate.c3p0.minPoolSize" value="5" />
+   <property name="hibernate.c3p0.initialPoolSize" value="5" />
+   <property name="hibernate.c3p0.maxPoolSize" value="20" />
   	<!--  How long to keep unused connections around(in seconds) 
 	Note: MySQL times out idle connections after 8hours(28,800seconds) 
 	so ensure this value is below MySQL idle timeout  -->

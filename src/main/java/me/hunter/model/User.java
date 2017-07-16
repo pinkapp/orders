@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.sky.framework.model.BizDomain;
+import me.hunter.framework.model.BizDomain;
 
 @Entity
 @Table(name = "b_user")

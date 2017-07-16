@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:redis="http://www.springframework.org/schema/redis"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis.xsd">
+	<bean id="messageListener"
+		class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
+		<constructor-arg ref="delegate" />
+		<property name="serializer">
+			<bean
+				class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+		</property>
+	</bean>
+	
+	<bean id="delegate" class="me.hunter.redis.reciever.DefaultMessageDelegate">
+		<!-- <property name="entityManagerFactory" ref="entityManagerFactory"></property> -->
+	</bean>
+
+	<bean id="redisContainer"
+		class="org.springframework.data.redis.listener.RedisMessageListenerContainer">
+		<property name="connectionFactory" ref="jedisConnFactory" />
+		<property name="messageListeners">
+			<map>
+				<entry key-ref="messageListener">
+					<bean class="org.springframework.data.redis.listener.ChannelTopic">
+						<constructor-arg value="hello" />
+					</bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="redisQueueListener" class="me.hunter.redis.reciever.QueueListener"/>  
+    <bean id="redisQueue" class="me.hunter.redis.reciever.RedisQueue" destroy-method="destroy">  
+        <property name="redisTemplate" ref="redisTemplate"></property>  
+        <property name="key" value="test"></property>  
+        <property name="listener" ref="redisQueueListener"></property>  
+    </bean>  
+</beans>

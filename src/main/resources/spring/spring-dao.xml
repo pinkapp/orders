@@ -3,30 +3,4 @@
 xmlns:jaxws="http://cxf.apache.org/jaxws"
 xsi:schemaLocation="http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd 
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="commonsDao" class="com.sky.framework.dao.impl.CommonsDaoImpl">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
-	<bean id="accountDao" class="com.sky.dao.AccountDaoImpl">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
-	<bean id="customerDAOTarget" class="com.sky.dao.CustomerDAOJPAImpl">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
-	<bean id="customerDAO"
-		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="target" ref="customerDAOTarget" />
-		<property name="transactionAttributes">
-			<props>
-				<prop key="save*">PROPAGATION_REQUIRED</prop>
-				<prop key="del*">PROPAGATION_REQUIRED</prop>
-				<prop key="update*">PROPAGATION_REQUIRED</prop>
-				<prop key="create*">PROPAGATION_REQUIRED</prop>
-				<prop key="add*">PROPAGATION_REQUIRED</prop>
-				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="*">PROPAGATION_REQUIRED</prop>
-			</props>
-		</property>
-	</bean>
 </beans>
