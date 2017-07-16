@@ -42,8 +42,8 @@ public class DealerServiceImpl implements DealerService {
 	@Transactional
 	public void save(Dealer entity) {
 		entity.setCreateDate(new Date());
-		listOps.leftPush("test", entity);
-		//em.persist(entity);
+		//listOps.leftPush("test", entity);
+		em.persist(entity);
         //redisTemplate.convertAndSend("hello", entity);
 	}
 	
